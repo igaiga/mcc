@@ -48,5 +48,7 @@ module MCC
     File.open(file) do |f|
       return !!(f.readline  =~ /^#!/)
     end
+  rescue EOFError
+    false
   end
 end

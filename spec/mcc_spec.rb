@@ -24,8 +24,9 @@ describe "Mcc" do
 
   it 'should insert a magick comment' do
     {
-      'without_magick_comment.rb' => true,
-      'without_shebung_and_magick_comment.rb' => false
+      'without_magick_comment.rb'             => true,
+      'without_shebung_and_magick_comment.rb' => false,
+      'empty.rb'                              => false
     }.each do |file, include_shebang|
       begin
         tmp = Tempfile.open(file)
@@ -43,6 +44,7 @@ describe "Mcc" do
   it 'should check include a shebang' do
     MCC.include_shebang?(fixture_file('with_shebang_and_magick_comment.rb')).should be true
     MCC.include_shebang?(fixture_file('with_magick_comment.rb')).should be false
+    MCC.include_shebang?(fixture_file('empty.rb')).should be false
   end
 
   def fixture_file(filename)
