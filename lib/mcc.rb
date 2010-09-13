@@ -9,7 +9,10 @@ module MCC
   def self.run(files, format = '# coding: utf-8')
     files.each do |file|
       unless include_magick_comment?(file)
+        puts "#{file}  => insert a magick comment!"
         insert_magick_comment(file, format)
+      else
+        puts "#{file}  => ok!"
       end
     end
   end
