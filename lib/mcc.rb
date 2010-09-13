@@ -21,6 +21,8 @@ module MCC
       end
     end
     false
+  rescue EOFError
+    false
   end
 
   def self.insert_magick_comment(file, magick_comment)

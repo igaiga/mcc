@@ -15,7 +15,8 @@ describe "Mcc" do
     {
       'with_magick_comment.rb'             => true,
       'without_magick_comment.rb'          => false,
-      'with_shebang_and_magick_comment.rb' => true
+      'with_shebang_and_magick_comment.rb' => true,
+      'empty.rb'                           => false
     }.each do |k, v|
       MCC.include_magick_comment?(fixture_file(k)).should be v
     end
